@@ -17,9 +17,17 @@
         $id = $row['id'];
         $_SESSION['name'] = $row['name'];
         $_SESSION['data'] = $row;
-        header("Location: dashboard.php?id=$id");
+        if (!$row){
+            $_SESSION['error'] = 'Invalid login details';
+            header("Location: index.php");
+        }
+        else{
+            header("Location: dashboard.php?id=$id");
+        }
+        
         
     }
+    
     
     
 ?>
